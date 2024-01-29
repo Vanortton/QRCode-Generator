@@ -62,8 +62,8 @@ function createQRCode(link) {
     new QRious({
         element: qrcodeContainer,
         value: link,
-        size: 120,
-        padding:50,
+        size: 200,
+        padding: 10,
     })
 }
 
