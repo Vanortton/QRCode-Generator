@@ -56,6 +56,7 @@ function changeQRCodeType(newType) {
 }
 
 function createQRCode(link) {
+    document.getElementById('download').style.display = 'block'
     document.getElementById('qrcode').innerHTML = ''
     new QRCode(document.getElementById('qrcode'), {
         text: link,
@@ -65,6 +66,14 @@ function createQRCode(link) {
         colorLight: '#ffffff',
         correctLevel: QRCode.CorrectLevel.H,
     })
+}
+
+function downloadQRCode() {
+    const img = document.getElementById('qrcode').getElementsByTagName('img')[0];
+    const a = document.createElement('a');
+    a.href = img.src;
+    a.download = 'qrcode.png';
+    a.click();
 }
 
 changeQRCodeType(type)
