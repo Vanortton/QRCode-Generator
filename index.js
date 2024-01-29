@@ -35,7 +35,6 @@ function uploadImage() {
     uploadToImgbb(imageFile).then((url) => {
         if (url) {
             createQRCode(url)
-            alert('Imagem enviada com sucesso! URL: ' + url)
         } else {
             alert('Falha ao enviar imagem.')
         }
