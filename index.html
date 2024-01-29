@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Gerar QRCode</title>
+        <link
+            rel="shortcut icon"
+            href="qrcode.png"
+            type="image/x-icon"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <script
+            src="index.js"
+            defer
+        ></script>
+    </head>
+    <body>
+        <header
+            class="d-flex flex-wrap justify-content-center p-3 mb-4 border-bottom"
+        >
+            <a
+                href="#"
+                class="d-flex align-items-center link-body-emphasis text-decoration-none gap-2"
+            >
+                <i class="bi bi-qr-code fs-4"></i>
+                <span class="fs-4">Gerador de QRCode</span>
+            </a>
+        </header>
+        <main class="d-flex p-3 w-100 justify-content-center">
+            <div
+                class="border rounded p-4 w-100"
+                style="max-width: 800px"
+            >
+                <ul
+                    class="nav nav-pills nav-fill gap-2 p-1 small bg-dark rounded-5 shadow-sm"
+                    id="pillNav2"
+                    role="tablist"
+                    style="
+                        --bs-nav-link-color: rgba(255, 255, 255, 0.75);
+                        --bs-nav-link-hover-color: #fff;
+                        --bs-nav-pills-link-active-color: var(--bs-dark);
+                        --bs-nav-pills-link-active-bg: var(--bs-white);
+                    "
+                >
+                    <a
+                        href="#link"
+                        class="nav-link p-0"
+                        id="qrcode-link"
+                    >
+                        <li
+                            class="nav-item"
+                            role="presentation"
+                        >
+                            <button
+                                class="nav-link rounded-5"
+                                id="home-tab2"
+                                data-bs-toggle="tab"
+                                type="button"
+                                role="tab"
+                                aria-selected="false"
+                                tabindex="-1"
+                                onclick="changeQRCodeType('link')"
+                            >
+                                <i class="bi bi-link fs-5"></i> &nbsp; LINK
+                            </button>
+                        </li>
+                    </a>
+                    <a
+                        href="#image"
+                        class="nav-link p-0"
+                        id="qrcode-image"
+                    >
+                        <li
+                            class="nav-item"
+                            role="presentation"
+                        >
+                            <button
+                                class="nav-link rounded-5"
+                                id="profile-tab2"
+                                data-bs-toggle="tab"
+                                type="button"
+                                role="tab"
+                                aria-selected="false"
+                                tabindex="-1"
+                                onclick="changeQRCodeType('image')"
+                            >
+                                <i class="bi bi-image-alt fs-5"></i> &nbsp;
+                                IMAGEM
+                            </button>
+                        </li>
+                    </a>
+                </ul>
+                <div id="type-link">
+                    <input
+                        type="text"
+                        placeholder="Seu link aqui..."
+                        class="form-control mt-3"
+                    />
+                </div>
+                <div id="type-image">
+                    <input
+                        type="file"
+                        placeholder="Carregue sua imagem..."
+                        class="form-control mt-3"
+                        id="imageFile"
+                    />
+                </div>
+                <div
+                    id="qrcode"
+                    class="d-flex p-3 w-100 justify-content-center border rounded mt-3"
+                >
+                    <h3>Seu resultado vai aparecer aqui...</h3>
+                </div>
+                <button
+                    class="btn btn-dark w-100 mt-3"
+                    id="btn-qrcode-link"
+                    onclick="createQRCode(document.querySelector('#type-link input').value)"
+                >
+                    GERAR QRCODE DE LINK
+                </button>
+                <button
+                    class="btn btn-dark w-100 mt-3"
+                    id="btn-qrcode-image"
+                    onclick="uploadImage()"
+                >
+                    GERAR QRCODE DE IMAGEM
+                </button>
+            </div>
+        </main>
+    </body>
+</html>
