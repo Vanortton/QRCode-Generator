@@ -57,23 +57,21 @@ function changeQRCodeType(newType) {
 
 function createQRCode(link) {
     document.getElementById('download').style.display = 'block'
-    document.getElementById('qrcode').innerHTML = ''
-    new QRCode(document.getElementById('qrcode'), {
-        text: link,
-        width: 128,
-        height: 128,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.H,
+    let qrcodeContainer = document.getElementById("qrcode");
+    qrcodeContainer.innerHTML = "";
+    new QRious({
+        element: qrcodeContainer,
+        value: link,
+        size: 120,
+        padding:50,
     })
 }
 
 function downloadQRCode() {
-    const img = document.getElementById('qrcode').getElementsByTagName('img')[0];
-    const a = document.createElement('a');
-    a.href = img.src;
-    a.download = 'qrcode.png';
-    a.click();
+    const link = document.createElement('a');
+    link.download = 'filename.png';
+    link.href = document.getElementById('qrcode').toDataURL()
+    link.click();
 }
 
 changeQRCodeType(type)
